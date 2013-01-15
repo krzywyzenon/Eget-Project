@@ -28,7 +28,7 @@ public class MainClass {
 //		System.out.println(ourHero.inventoryCheck("luz"));
 		
 		firstRoom(true, false, false, false);
-		firstRoomReturn();
+//		firstRoomReturn();
 //		ourHero.addToInventory("Key to the door");
 //		System.out.println(ourHero.getInventoryCounter());
 //		ourHero.addToInventory("bottle");
@@ -92,7 +92,7 @@ public class MainClass {
 		boolean batDead = bat;
 		startRoom.setUnlock(unlock);
 		Battle batFight = new Battle(ourHero, evilBat);
-		System.out.println("Blablabla text o rozpoczeciu przygody");
+		System.out.println("Something something something adventure, something something something begins...\nUnfortunately your computer is not strong enough to play with graphics, so, dear user you have to experience text version of the game...");
 		do{
 			System.out.println("Menu");
 			System.out.println("(I)nventory");

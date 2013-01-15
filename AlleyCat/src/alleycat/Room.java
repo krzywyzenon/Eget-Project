@@ -31,7 +31,7 @@ public Room(int food, int description){
 	
 	public boolean openDoor(){
 		if (doorUnlockingStatus==true){
-			System.out.println("Congratulations! You have opened the door and");
+			System.out.println("Congratulations! You have opened the door and.... have to pay 10000kr for the full version of this game.");
 			return true;
 		}
 		else
