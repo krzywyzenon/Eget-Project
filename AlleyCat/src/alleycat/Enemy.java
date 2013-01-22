@@ -12,6 +12,8 @@ public class Enemy {
 	private int chanceToHit;
 	private Random rnd = new Random();
 	private int dices;
+	private String battleMsg;
+	private String deathMsg=null;
 	
 	public Enemy(String enemyName, int hp, int dmg, int xp, int def, int hitCh){
 		hitPoints = hp;
@@ -30,17 +32,20 @@ public class Enemy {
 		dices = rnd.nextInt(6);
 		hitPointsLoss = dmg + dices - defense;
 		if(hitPointsLoss>0){
-			System.out.println("You hit " + name +" for: "+ hitPointsLoss);
+//			System.out.println("You hit " + name +" for: "+ hitPointsLoss);
+			battleMsg = "You hit " + name +" for: "+ hitPointsLoss;
 			hitPoints = hitPoints - hitPointsLoss;
 		}else
 		{
-			System.out.println("You cannot penetrate your enemy's armour!!!");
-//			hitPoints = hitPoints;
+//			System.out.println("You cannot penetrate your enemy's armour!!!");
+			battleMsg = "You cannot penetrate your enemy's armour!!!";
+			hitPoints = hitPoints;
 			
 		}
 			
 		if(hitPoints <= 0){
-			System.out.println(name + " is dead");
+//			System.out.println(name + " is dead");
+			deathMsg = name + " is dead";
 			return true;
 		}
 		else
@@ -63,6 +68,14 @@ public class Enemy {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public String getBattleMsg(){
+		return battleMsg;
+	}
+
+	public String getDeathMsg(){
+		return deathMsg;
 	}
 		
 	public void setDefense(int defValue){

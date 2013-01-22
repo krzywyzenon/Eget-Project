@@ -3,6 +3,8 @@ package alleycat;
 import java.util.Random;
 
 public class MainCharacter {
+	private String battleMsg;
+	private String deathMsg=null;
 	private int maxHitPoints;
 	private int hitPoints;
 	private int hitPointsLoss;
@@ -40,15 +42,18 @@ public class MainCharacter {
 		hitPointsLoss = dmg + dices - defense;
 
 		if(hitPointsLoss >0){
-			System.out.println("You got hit by " + enemyName +" for: "+ hitPointsLoss);
+//			System.out.println("You got hit by " + enemyName +" for: "+ hitPointsLoss);
+			battleMsg = "You got hit by " + enemyName +" for: "+ hitPointsLoss;
 			hitPoints = hitPoints - hitPointsLoss;
 		}else{
-			System.out.println(enemyName + " strikes too weakly to wound you.");
+//			System.out.println(enemyName + " strikes too weakly to wound you.");
+			battleMsg = enemyName + " strikes too weakly to wound you.";
 //			hitPoints = hitPoints;
 		}
 			
 		if(hitPoints <= 0){
-			System.out.println("You are dead");
+//			System.out.println("You are dead");
+			deathMsg = "You are dead fucker";
 			return true;
 		}
 		else
@@ -58,6 +63,14 @@ public class MainCharacter {
 	}
 	
 	// getters
+	public String getBattleMsg(){
+		return battleMsg;
+	}
+
+	public String getDeathMsg(){
+		return deathMsg;
+	}
+		
 	
 	public int getMaxHp(){
 		return maxHitPoints;

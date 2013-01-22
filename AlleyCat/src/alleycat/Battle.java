@@ -2,18 +2,27 @@ package alleycat;
 
 import java.util.Random;
 
+import javax.swing.JTextArea;
+
 public class Battle {
-	boolean foeDead = false;
+	public boolean foeDead = false;
 	
 	Random rnd;
 	MainCharacter hero;
 	Enemy enemy;
 	int battleXp = 0;
+	JTextArea text;
 		
 	public Battle(MainCharacter player, Enemy antagonist){
 		hero = player;
 		enemy = antagonist;
 		
+	}
+	
+	public Battle(MainCharacter player, Enemy antagonist, JTextArea txt){
+		hero = player;
+		enemy = antagonist;
+		text = txt;
 	}
 	
 	public boolean fight(){
@@ -33,8 +42,11 @@ public class Battle {
 			dices = rnd.nextInt(100);
 			if(dices<mainChar.getHitChance()){
 				foeDead=opponent.getHit(heroAttack);
+				text.append(opponent.getBattleMsg() + System.lineSeparator());
+				if(opponent.getDeathMsg()!=null)
+					text.append(opponent.getDeathMsg() + System.lineSeparator());
 			}else{
-				System.out.println("You missed!");
+				text.append("You missed!" + System.lineSeparator());
 			}
 			
 			try {
@@ -49,20 +61,22 @@ public class Battle {
 				dices = rnd.nextInt(100);
 				if(dices<opponent.getHitChance()){
 					heroDead=mainChar.getHit(foeAttack);
+					text.append(mainChar.getBattleMsg()+System.lineSeparator());
 				}
 				else
 				{
-					System.out.println("You have avoided the blow");
+					text.append("You have avoided the blow" + System.lineSeparator());
 				}
 					
 			}else
 			{
-				System.out.println("You got " + opponent.getXp() + " xp.");
+				text.append("You got " + opponent.getXp() + " xp.");
 				battleXp = opponent.getXp();
 			}
 			
 		}while(heroDead == false && foeDead == false);
 		
+		if(heroDead) text.append(mainChar.getDeathMsg());
 		return heroDead;
 		
 	}
@@ -73,6 +87,10 @@ public class Battle {
 	
 	public int xpGain(){
 		return battleXp;
+	}
+	
+	public void setTextArea(JTextArea txt){
+		text = txt;
 	}
 
 }

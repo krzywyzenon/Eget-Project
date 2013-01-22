@@ -1,11 +1,13 @@
 package alleycat;
 
+import javax.swing.JTextArea;
+
 public class Room {
 String descriptions[];
 int descNumber;
 private int foodInRoom;
 private boolean doorUnlockingStatus = false;
-
+private JTextArea textField = null;
 
 public Room(int food, int description){
 		foodInRoom = food;
@@ -15,6 +17,10 @@ public Room(int food, int description){
 		
 		descNumber = description;
 	}
+
+public Room(int food){
+	foodInRoom = food;
+}
 	
 //everytime animal eats this method should follow
 	
@@ -27,16 +33,19 @@ public Room(int food, int description){
 	public void unlockDoor(){
 		doorUnlockingStatus = true;
 		System.out.println("You have unlocked the door.");
+		textField.setText("You have unlocked the door.");
 	}
 	
 	public boolean openDoor(){
 		if (doorUnlockingStatus==true){
 			System.out.println("Congratulations! You have opened the door and.... have to pay 10000kr for the full version of this game.");
+			textField.setText("Congratulations! You have opened the door and.... have to pay 10000kr for the full version of this game.");
 			return true;
 		}
 		else
 		{
 			System.out.println("Sorry the door is locked");
+			textField.setText("Sorry the door is locked");
 			return false;
 		}
 	}
@@ -63,6 +72,10 @@ public Room(int food, int description){
 
 	public void setUnlock(boolean value){
 		doorUnlockingStatus = value;
+	}
+	
+	public void setTextArea(JTextArea text){
+		textField = text;
 	}
 
 }
