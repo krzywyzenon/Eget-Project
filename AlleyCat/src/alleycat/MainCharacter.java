@@ -53,7 +53,7 @@ public class MainCharacter {
 			
 		if(hitPoints <= 0){
 //			System.out.println("You are dead");
-			deathMsg = "You are dead fucker";
+			deathMsg = "You are dead!!";
 			return true;
 		}
 		else
