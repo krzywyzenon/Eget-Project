@@ -10,6 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JToolBar;
 import javax.swing.Timer;
 
 import alleycat.Battle;
@@ -40,8 +44,31 @@ public class FirstRoom {
 	BowlMenu bowlDialog;
 	CageMenu cageDialog;
 	Battle batBattle;
+	FirstRoom screen;
+	JMenuBar menuBar;
+	JMenu fileMenu;
+	JMenu statsMenu;
+	JMenu quitMenu;
+	JMenuItem quitItem;
+	JMenuItem invItem;
+	JMenuItem statsItem;
+	JToolBar toolBar;
+	JButton quitBt;
 	
 		FirstRoom(){
+			screen = this;
+			menuBar = new JMenuBar();
+			fileMenu = new JMenu("File");
+			quitItem = new JMenuItem("Quit");
+			fileMenu.add(quitItem);
+			statsMenu= new JMenu("Stats");
+			statsItem = new JMenuItem("Character Sheet");
+			invItem = new JMenuItem("Inventory");
+			statsMenu.add(statsItem);
+			statsMenu.add(invItem);
+			menuBar.add(fileMenu);
+			menuBar.add(statsMenu);
+			
 			ourHero = new CatCharacter(100, 10, 50);
 			evilBat = new Enemy("EVIIIILLLLL bat", 50, 120, 20, 7, 70);
 			startRoom = new Room(2);
@@ -54,6 +81,8 @@ public class FirstRoom {
 			myFrame.setSize(600, 600);
 			myFrame.setResizable(false);
 			myFrame.setLayout(new GridBagLayout());
+			myFrame.setJMenuBar(menuBar);
+		
 			Dimension d;
 			Dimension g = null;
 			ImageIcon icon = new ImageIcon("floor.jpg");
@@ -108,7 +137,7 @@ public class FirstRoom {
 						
 						switch(position){
 						case "door":
-							doorDialog = new DoorMenu(startRoom, ourHero);
+							doorDialog = new DoorMenu(startRoom, ourHero, screen);
 							break;
 						case "bowl":
 						{
@@ -204,7 +233,7 @@ public class FirstRoom {
 						}
 						break;
 						case "cage":
-							cageDialog = new CageMenu(batBattle, ourHero, evilBat);
+							cageDialog = new CageMenu(batBattle, ourHero, evilBat, screen);
 							break;
 						}
 					}
@@ -247,6 +276,26 @@ public class FirstRoom {
 					
 				}
 			});
+			
+			statsItem.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent a){
+					Statss stats = new Statss(ourHero);
+				}
+			});
+			
+			invItem.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent a){
+					Inventoryy inv = new Inventoryy(ourHero);
+				}
+			});
+			
+			quitItem.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent a){
+					System.exit(0);
+				}
+			});
+			
+		
 			
 			buttons[0].setIcon(animations.doorRun[0]);
 			buttons[1].setIcon(floor[4]);
@@ -555,7 +604,7 @@ public class FirstRoom {
 															igr = 0;
 															timer.stop();
 															btnlck=false;
-															doorDialog = new DoorMenu(startRoom, ourHero);
+															doorDialog = new DoorMenu(startRoom, ourHero, screen);
 														}
 													}
 												};
@@ -784,7 +833,7 @@ public class FirstRoom {
 															igr = 0;
 															timer.stop();
 															btnlck=false;
-															doorDialog = new DoorMenu(startRoom, ourHero);
+															doorDialog = new DoorMenu(startRoom, ourHero, screen);
 														}
 													}
 												};
@@ -903,7 +952,7 @@ public class FirstRoom {
 																					igr = 0;
 																					timer.stop();
 																					btnlck=false;
-																					doorDialog = new DoorMenu(startRoom, ourHero);
+																					doorDialog = new DoorMenu(startRoom, ourHero, screen);
 																				}
 																			}
 																		};
@@ -1076,6 +1125,9 @@ public class FirstRoom {
 			timer.start();
 		}
 		
+		public JFrame getWindow(){
+			return this.myFrame;
+		}
 		
 		
 		

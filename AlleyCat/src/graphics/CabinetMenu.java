@@ -1,5 +1,7 @@
 package graphics;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,15 +22,28 @@ public class CabinetMenu {
 	JPanel buttonPanel = new JPanel();
 	MainCharacter hero;
 	static boolean searched = false;
+	Font font;
 	
 	CabinetMenu(MainCharacter playerChar){
 		text.setEditable(false);
 		hero = playerChar;
+		font = new Font("Verdana", Font.BOLD, 12);
 		
 		cabinetDialog.setVisible(true);
 		cabinetDialog.setSize(300, 150);
 		cabinetDialog.setResizable(false);
 		cabinetDialog.setLayout(new GridLayout(2,1));
+		
+		text.setFont(font);
+		text.setBackground(new Color(118, 54, 18));
+		text.setForeground(new Color(246, 192, 83));
+		
+		searchButton.setBackground(new Color(118, 54, 18));
+		searchButton.setForeground(new Color(246, 192, 83));
+		searchButton.setBorderPainted(false);
+		leaveButton.setBackground(new Color(118, 54, 18));
+		leaveButton.setForeground(new Color(246, 192, 83));
+		leaveButton.setBorderPainted(false);
 		
 		buttonPanel.setLayout(new GridLayout(2,1));
 		buttonPanel.add(searchButton);

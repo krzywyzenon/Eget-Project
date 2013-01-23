@@ -2,6 +2,8 @@ package alleycat;
 
 import java.util.Random;
 
+import javax.swing.JTextArea;
+
 public class MainCharacter {
 	private String battleMsg;
 	private String deathMsg=null;
@@ -20,6 +22,7 @@ public class MainCharacter {
 	private String inventory[];
 	private int invCounter = 0;
 //	private boolean check = false;
+	JTextArea text;
 	
 	
 	public MainCharacter(int hp, int dmg, int hitCh){
@@ -151,7 +154,10 @@ public class MainCharacter {
 			}
 			return true;
 	}
-		
+	
+	public void setTextField(JTextArea txt){
+		text = txt;
+	}
 				
 	
 	//other methods
@@ -203,6 +209,16 @@ public  boolean invCheck(String thingie){
 		
 	}
 	
+	public void statsToGui(){
+		text.append("---------------------------------------------------------");
+		text.append("\n| Hit     | |    HP           | | Atk | | Def | | Xp | | Level |");
+		text.append("\n------------------------------------------------------");
+		text.append("\n| "+getHitChance()+"% | | "+getHp()+" / " + getMaxHp() + " | |  "+getDamage()+" | |  "+getDefense()+" | |  "+getXp()+"   | |        "+getLevel()+ " |");
+		text.append("\n---------------------------------------------------------");
+		
+		
+	}
+	
 	public void inventoryList(){
 		System.out.println("Your inventory: ");
 		for(int i=0; i<inventory.length; i++){
@@ -210,6 +226,16 @@ public  boolean invCheck(String thingie){
 				System.out.print(inventory[i] + ", ");
 		}
 		System.out.print("\n");
+		
+	}
+
+	public void inventoryListToGui(){
+		text.append("Your inventory: \n");
+		for(int i=0; i<inventory.length; i++){
+			if(inventory[i]!="nothing")
+				text.append(inventory[i] + ", ");
+		}
+		
 		
 	}
 	

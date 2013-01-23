@@ -1,5 +1,7 @@
 package graphics;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +18,7 @@ import alleycat.Enemy;
 import alleycat.MainCharacter;
 
 public class CageMenu {
-	JDialog cageDialog = new JDialog();
+	private JDialog cageDialog = new JDialog();
 	JTextArea text = new JTextArea();
 	JScrollPane scroll = new JScrollPane(text);
 	JButton fightButton = new JButton("Fight the bat");
@@ -31,10 +33,19 @@ public class CageMenu {
 	Thread cage;
 	CageMenu cageToSend;
 	boolean battleFinished = false;
+	private FirstRoom gameScreen;
+	Font font;
+	Font font1;
 	
-	public CageMenu(Battle currentBattle, MainCharacter playerChar, Enemy enemy){
+	public CageMenu(Battle currentBattle, MainCharacter playerChar, Enemy enemy, FirstRoom screen){
+		gameScreen = screen;
 		cageToSend = this;
+		font = new Font("Verdana", Font.BOLD, 12);
+		font1 = new Font("Verdana", Font.BOLD, 24);
 		text.setEditable(false);
+		text.setFont(font);
+		text.setBackground(new Color(118, 54, 18));
+		text.setForeground(new Color(246, 192, 83));
 		hero = playerChar;
 		evilBat = enemy;
 		battle = currentBattle;
@@ -46,7 +57,14 @@ public class CageMenu {
 		cageDialog.setLayout(new GridLayout(2,1));
 		t = new Thread(currentBattle);
 
-		
+		fightButton.setBackground(new Color(118, 54, 18));
+		fightButton.setForeground(new Color(246, 192, 83));
+		fightButton.setBorderPainted(false);
+		fightButton.setFont(font1);
+		leaveButton.setBackground(new Color(118, 54, 18));
+		leaveButton.setForeground(new Color(246, 192, 83));
+		leaveButton.setBorderPainted(false);
+		leaveButton.setFont(font1);
 		
 		buttonPanel.setLayout(new GridLayout(2,1));
 		buttonPanel.add(fightButton);
@@ -81,8 +99,7 @@ public class CageMenu {
 		
 		leaveButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent a){
-				hero.stats();
-//				cageDialog.dispose();
+				cageDialog.dispose();
 			}
 		});
 		
@@ -95,6 +112,14 @@ public class CageMenu {
 	
 	public static void setBatDead(boolean isDead){
 		batDead = isDead;
+	}
+	
+	public JDialog getWindow(){
+		return cageDialog;
+	}
+	
+	public FirstRoom getGameScreen(){
+		return gameScreen;
 	}
 
 

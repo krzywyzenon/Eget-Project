@@ -1,5 +1,8 @@
 package alleycat;
 
+import graphics.DoorMenu;
+import graphics.GameOver;
+
 import javax.swing.JTextArea;
 
 public class Room {
@@ -8,6 +11,7 @@ int descNumber;
 private int foodInRoom;
 private boolean doorUnlockingStatus = false;
 private JTextArea textField = null;
+DoorMenu window;
 
 public Room(int food, int description){
 		foodInRoom = food;
@@ -39,7 +43,10 @@ public Room(int food){
 	public boolean openDoor(){
 		if (doorUnlockingStatus==true){
 			System.out.println("Congratulations! You have opened the door and.... have to pay 10000kr for the full version of this game.");
-			textField.setText("Congratulations! You have opened the door and.... have to pay 10000kr for the full version of this game.");
+			textField.setText("Congratulations! You have opened the door!");
+			window.getWindow().dispose();
+			window.getGameScreen().getWindow().dispose();
+			GameOver go = new GameOver("victory");
 			return true;
 		}
 		else
@@ -76,6 +83,10 @@ public Room(int food){
 	
 	public void setTextArea(JTextArea text){
 		textField = text;
+	}
+	
+	public void setDoorMenu(DoorMenu dialog){
+		window = dialog;
 	}
 
 }

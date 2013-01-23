@@ -1,5 +1,7 @@
 package graphics;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,12 +22,17 @@ public class DoorMenu {
 	JPanel buttonPanel = new JPanel();
 	Room room;
 	MainCharacter hero;
+	Font font;
+	FirstRoom gameScreen;
 	
-	DoorMenu(Room currentRoom, MainCharacter playerChar){
+	DoorMenu(Room currentRoom, MainCharacter playerChar, FirstRoom screen){
+		gameScreen = screen;
 		text.setEditable(false);
+		font = new Font("Verdana", Font.BOLD, 12);
 		hero = playerChar;
 		room = currentRoom;
 		room.setTextArea(text);
+		room.setDoorMenu(this);
 		doorDialog.setVisible(true);
 		doorDialog.setSize(300, 150);
 		doorDialog.setResizable(false);
@@ -38,6 +45,16 @@ public class DoorMenu {
 		doorDialog.add(buttonPanel);
 		doorDialog.add(text);
 		
+		text.setFont(font);
+		text.setBackground(new Color(118, 54, 18));
+		text.setForeground(new Color(246, 192, 83));
+		
+		openButton.setBackground(new Color(118, 54, 18));
+		openButton.setForeground(new Color(246, 192, 83));
+		openButton.setBorderPainted(false);
+		leaveButton.setBackground(new Color(118, 54, 18));
+		leaveButton.setForeground(new Color(246, 192, 83));
+		leaveButton.setBorderPainted(false);
 		openButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent a){
 				if(hero.inventoryCheck("key to the door")==true){
@@ -56,5 +73,14 @@ public class DoorMenu {
 			}
 		});
 	}
+	
+	public JDialog getWindow(){
+		return doorDialog;
+	}
+	
+	public FirstRoom getGameScreen(){
+		return gameScreen;
+	}
+
 
 }

@@ -1,6 +1,8 @@
 package alleycat;
 
 import graphics.CageMenu;
+import graphics.FirstRoom;
+import graphics.GameOver;
 
 import java.util.Random;
 
@@ -16,6 +18,7 @@ public class Battle implements Runnable {//Bylo zajebiscie - jest chujowo!!! Spr
 	JTextArea text;
 	Thread t;
 	CageMenu cage;
+	FirstRoom gameArea;
 		
 	public Battle(MainCharacter player, Enemy antagonist){
 		hero = player;
@@ -164,7 +167,7 @@ public class Battle implements Runnable {//Bylo zajebiscie - jest chujowo!!! Spr
 					hero.setXp(xpGain());
 					hero.checkXp();
 					CageMenu.setBatDead(foeDead);
-					text.append("After defeating that flying monstrosity you retrieve the door key!");
+					text.append("\nAfter defeating that flying monstrosity \nyou retrieve the door key!");
 					hero.addToInventory("key to the door");
 				}
 
@@ -172,7 +175,13 @@ public class Battle implements Runnable {//Bylo zajebiscie - jest chujowo!!! Spr
 			
 		}while(heroDead == false && foeDead == false);
 		
-		if(heroDead) text.append(hero.getDeathMsg());
+		if(heroDead) {
+			text.append(hero.getDeathMsg());
+			cage.getWindow().dispose();
+			cage.getGameScreen().getWindow().dispose();
+			GameOver go = new GameOver("defeat");
+			
+		}
 		
 		
 	}
