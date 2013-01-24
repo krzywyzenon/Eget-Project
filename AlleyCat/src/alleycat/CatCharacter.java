@@ -1,5 +1,6 @@
 package alleycat;
-
+//Class inheriting from MainCharacter. The only playable class in GUI version. It has better damage than DogCharacter, but less defense.
+//On levelling up it gets more hitting chance and damage comparing to the DogCharacter, but gets less hp instead.
 public class CatCharacter extends MainCharacter {
 	
 	public CatCharacter(int hp, int dmg, int hitCh) {

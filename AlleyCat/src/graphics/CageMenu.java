@@ -1,3 +1,4 @@
+
 package graphics;
 
 import java.awt.Color;
@@ -17,6 +18,7 @@ import alleycat.Battle;
 import alleycat.Enemy;
 import alleycat.MainCharacter;
 
+//This is class which takes care of bat cage. While it does not handle battle itself, it calls upon the responsible class.
 public class CageMenu {
 	private JDialog cageDialog = new JDialog();
 	JTextArea text = new JTextArea();

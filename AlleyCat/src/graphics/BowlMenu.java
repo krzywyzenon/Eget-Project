@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import alleycat.MainCharacter;
 import alleycat.Room;
 
+//This class takes care of the food bowl and eating process - the logic code is directly pasted from the text version.
 public class BowlMenu {
 	JDialog bowlDialog = new JDialog();
 	JTextArea text = new JTextArea();

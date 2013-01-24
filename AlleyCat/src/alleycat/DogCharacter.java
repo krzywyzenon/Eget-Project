@@ -1,5 +1,6 @@
 package alleycat;
-
+//Class not implemented in GUI version, because of lack of time - with my low GIMP/Photoshop skills, finding proper pictures for animal animation and then using
+//them to create the animation on the screen takes ages.
 public class DogCharacter extends MainCharacter {
 
 	public DogCharacter(int hp, int dmg, int hitCh) {

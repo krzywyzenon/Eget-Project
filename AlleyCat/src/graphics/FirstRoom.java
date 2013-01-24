@@ -21,7 +21,7 @@ import alleycat.CatCharacter;
 import alleycat.Enemy;
 import alleycat.MainCharacter;
 import alleycat.Room;
-//Uwaga - zrobic switcha ktory zmienia ikone miski w zaleznosci od tego czy pelna czy pusta - zmienia element a arrayu
+// This is the actual main class - and the only room for the game. As the class code is pretty big, i'll comment it in some more details
 public class FirstRoom {
 	MainCharacter ourHero;
 	Enemy evilBat;
@@ -86,6 +86,9 @@ public class FirstRoom {
 			Dimension d;
 			Dimension g = null;
 			ImageIcon icon = new ImageIcon("floor.jpg");
+			//Here I fill the array with the beginning textures. The reason for using array is that it is easier to use in loops, which I have quite a few
+			//The last icon has 2 versions - one of the full bowl, the other with the empty one, but due to the lack of time I have not implemented 
+			//functionality, which would show different textures depending on wether the bowl is full or empty.
 			floor[0] = new ImageIcon("living room/floor.jpg");
 			floor[1] = new ImageIcon("living room/floor01.jpg");
 			floor[2] = new ImageIcon("living room/floor02.jpg");
@@ -104,13 +107,12 @@ public class FirstRoom {
 			floor[15] = new ImageIcon("living room/floor33a.jpg");
 			floor[16] = new ImageIcon("living room/floor33b.jpg");
 			
-			
+			//The game screen is a square 4x4 filled with 12 JLabels and 4 JButtons created below. Elements size is adjusted to the texture size
 			for(int i=0; i<labels.length; i++){
 				labels[i] = new JLabel();
 				d = labels[i].getPreferredSize();
 				g = new Dimension(d.height+130, d.width+130);
 				labels[i].setPreferredSize(g);
-//				labels[i].setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 			}
 			labels[0].setIcon(floor[0]);
 			labels[1].setIcon(floor[1]);
@@ -131,6 +133,9 @@ public class FirstRoom {
 				buttons[i].setBorderPainted(false);
 			}
 			
+			//The buttons functionality calls for run animation, where the pressed button is target. The animation differs depending on the hero's current
+			//position. Variable btnlck is a safety feature preventing user from activating button's functionality while animation continues, cause 
+			//it would cause chaos on the screen.
 			buttons[0].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {
 					if(!btnlck){
@@ -354,6 +359,10 @@ public class FirstRoom {
 				myFrame.pack();
 		}
 		
+		//The "walk" methods use Timer class of swing in order to change icons of buttons/label, thus creating impression of an animation
+		//The first three are a bit weirdly created (I mean iteration), but later on I got some routine and it is more organized. I didn't correct
+		//the first three though, because of the fact that it would be too time-consuming.
+		
 		public void walkDoorBowl(){
 			ActionListener action = new ActionListener(){
 				@Override
@@ -376,7 +385,7 @@ public class FirstRoom {
 										public void actionPerformed(ActionEvent a){
 											labels[8].setIcon(animations.doorRun[igr+11]);
 											igr++;
-											if(igr==7){ //zeby skrecic z miski zmienic tu na 2 (doordown9 dorrun11)
+											if(igr==7){ 
 												labels[8].setIcon(floor[11]);
 												igr=0;
 												timer.stop();
@@ -438,7 +447,7 @@ public class FirstRoom {
 										public void actionPerformed(ActionEvent a){
 											labels[8].setIcon(animations.doorRun[igr+11]);
 											igr++;
-											if(igr==2){ //zeby skrecic z miski zmienic tu na 2 (doordown9 dorrun11)
+											if(igr==2){ 
 												igr=0;
 												timer.stop();
 												ActionListener action = new ActionListener(){
@@ -1124,6 +1133,7 @@ public class FirstRoom {
 			timer = new Timer(100, action);
 			timer.start();
 		}
+		
 		
 		public JFrame getWindow(){
 			return this.myFrame;

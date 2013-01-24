@@ -2,6 +2,8 @@ package graphics;
 
 import javax.swing.ImageIcon;
 
+//This class has not methods - it contains only variables with pictures used for animation
+
 public class FRanim {
 	ImageIcon doorRun[] = new ImageIcon[22];
 	ImageIcon turnToCage[] = new ImageIcon[3];

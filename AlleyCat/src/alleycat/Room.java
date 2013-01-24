@@ -5,6 +5,8 @@ import graphics.GameOver;
 
 import javax.swing.JTextArea;
 
+//The old class adapted to the GUI needs, but as its functionality is quite low I would probably remove it and move its functions to other classes if
+//I chose to continue with this project
 public class Room {
 String descriptions[];
 int descNumber;
@@ -26,14 +28,12 @@ public Room(int food){
 	foodInRoom = food;
 }
 	
-//everytime animal eats this method should follow
 	
 	public int animalEats(){
 		foodInRoom --;
 		return foodInRoom;
 	}
 	
-	//method to be used only if the player has the key
 	public void unlockDoor(){
 		doorUnlockingStatus = true;
 		System.out.println("You have unlocked the door.");

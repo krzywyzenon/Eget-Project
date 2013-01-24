@@ -1,7 +1,6 @@
 package graphics;
 
-import alleycat.Room;
-
+//Class starting the game
 public class StartGraph {
 
 	/**

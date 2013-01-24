@@ -8,7 +8,9 @@ import java.util.Random;
 
 import javax.swing.JTextArea;
 
-public class Battle implements Runnable {//Bylo zajebiscie - jest chujowo!!! Sprobowac zrobic klase extendujaca - coby walka byla bardziej zobiektywizowana
+//Class taking care of battle mechanics, rewards (xp, loot) and sends information to the text area of CageMenu class. In case of defeat this class calls
+//upon respective instance of GameOver class
+public class Battle implements Runnable {
 	public boolean foeDead = false;
 	
 	Random rnd;

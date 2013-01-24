@@ -1,11 +1,9 @@
 package alleycat;
 
 import java.util.Scanner;
-
+//In the text version this was the main "game arena". Now some options may not work properly due to changes made in some classes
 public class MainClass {
-// Do zrobienia nastepnym razem: pomyslec nad ekwipunkiem - konkretnie indeksowaniem i usuwaniem tegoz (moze zmiana typu na object), 
-//	popracowac nad pokojem i scenariuszem - last upd zrobic petle w kazdym wyborze. pamietac o inventory!!!
-	// UPD - poza petlami wiekszosc zrobiona - tero scenariusz!!
+
 	static boolean heroDead=false;
 	static Scanner scan = new Scanner(System.in);
 	static char choice;
@@ -16,30 +14,11 @@ public class MainClass {
 	static boolean scarfTaken;
 	
 	public static void main(String[] args) {
-//		boolean foeDead=false;
-//		int heroAttack;
-//		int foeAttack;
-		
+
 		ourHero = characterCreation();
-//		ourHero.addToInventory("scarf");
-////		System.out.println(ourHero.getInventory());
-//		System.out.println(ourHero.inventoryCheck("pioch"));
-//		System.out.println(ourHero.inventoryCheck("scarf"));
-//		System.out.println(ourHero.inventoryCheck("luz"));
 		
 		firstRoom(true, false, false, false);
-//		firstRoomReturn();
-//		ourHero.addToInventory("Key to the door");
-//		System.out.println(ourHero.getInventoryCounter());
-//		ourHero.addToInventory("bottle");
-//		System.out.println(ourHero.getInventoryCounter());
-//		ourHero.inventoryList();
-//		ourHero.removeFromInventory("Key to the door");
-//		ourHero.addToInventory("hammer");
-//		ourHero.addToInventory("nail");
-//		ourHero.addToInventory("screwdriver");
-//		ourHero.inventoryList();
-//		
+		firstRoomReturn();
 		
 	}
 	

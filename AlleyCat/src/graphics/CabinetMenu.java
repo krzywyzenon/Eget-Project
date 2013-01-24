@@ -14,6 +14,8 @@ import javax.swing.JTextArea;
 import alleycat.MainCharacter;
 import alleycat.Room;
 
+//This class is called upon by clicking on the cabinet button and takes care of searching through said piece of furniture in order to find some protection
+//from the EVIIILLLL Bat
 public class CabinetMenu {
 	JDialog cabinetDialog = new JDialog();
 	JTextArea text = new JTextArea();

@@ -4,6 +4,10 @@ import java.util.Random;
 
 import javax.swing.JTextArea;
 
+
+//Class taking care of player character, its stats, inventory, levelling etc. One method is empty (checkXP) in order to be overriden by an inheriting class,
+//because different races have different rules regarding stats increase on "level up".
+//This class also contains method for "being hit by enemy" which is used by Battle class
 public class MainCharacter {
 	private String battleMsg;
 	private String deathMsg=null;
@@ -21,7 +25,6 @@ public class MainCharacter {
 	private int dices;
 	private String inventory[];
 	private int invCounter = 0;
-//	private boolean check = false;
 	JTextArea text;
 	
 	

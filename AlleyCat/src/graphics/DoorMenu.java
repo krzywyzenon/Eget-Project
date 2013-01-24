@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import alleycat.MainCharacter;
 import alleycat.Room;
 
+//Class showing dialog option for door component and, depending on whether player has the key or not, enabling its opening through the Room class
 public class DoorMenu {
 	JDialog doorDialog = new JDialog();
 	JTextArea text = new JTextArea();

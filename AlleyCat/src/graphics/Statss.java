@@ -1,5 +1,5 @@
 package graphics;
-
+//Class showing the character sheet. Name problems same as with Inventory class
 import java.awt.Color;
 import java.awt.Font;
 

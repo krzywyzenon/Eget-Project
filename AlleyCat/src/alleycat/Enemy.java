@@ -2,6 +2,7 @@ package alleycat;
 
 import java.util.Random;
 
+//Class describing enemy with its name and stats. Like MainCharacter this class contains getHit method
 public class Enemy {
 	private int hitPoints;
 	private int damage;

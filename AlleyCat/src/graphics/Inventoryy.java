@@ -8,6 +8,8 @@ import javax.swing.JTextArea;
 
 import alleycat.MainCharacter;
 
+//Class showing the window with player inventory. Originally it was even named Inventory but due to some git problems (ignoring the class while committing)
+//I needed to clone it with another name
 public class Inventoryy {
 	JDialog panel;
 	JTextArea text;

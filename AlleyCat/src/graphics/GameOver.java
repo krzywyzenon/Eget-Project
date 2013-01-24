@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
+
+//Class showing the victory or defeat screen and closing program.
 public class GameOver {
 	JDialog overScreen;
 	JLabel overLabel;
@@ -51,22 +53,7 @@ public class GameOver {
 		overScreen.add(text);
 		
 		overScreen.pack();
-		
-//		for(int i=0; i<100; i++){
-//			
-//		}
-		
-//		try {
-//			Thread.sleep(10000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-//		System.exit(0);
-		
-		
-		
+				
 	}
 	
 	WindowListener exitListener = new WindowAdapter() {
