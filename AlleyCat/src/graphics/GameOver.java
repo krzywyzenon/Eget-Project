@@ -3,10 +3,14 @@ package graphics;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class GameOver {
@@ -22,6 +26,8 @@ public class GameOver {
 		font1 = new Font("Verdana", Font.BOLD, 24);
 		finishing = condition;
 		overScreen = new JDialog();
+		overScreen.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		overScreen.addWindowListener(exitListener);
 		overScreen.setSize(750, 750);
 		overScreen.setVisible(true);
 		overLabel = new JLabel("         GAME OVER    ");
@@ -44,11 +50,11 @@ public class GameOver {
 		overScreen.add(overLabel);
 		overScreen.add(text);
 		
-//		overScreen.pack();
+		overScreen.pack();
 		
-		for(int i=0; i<100; i++){
-			
-		}
+//		for(int i=0; i<100; i++){
+//			
+//		}
 		
 //		try {
 //			Thread.sleep(10000);
@@ -59,6 +65,20 @@ public class GameOver {
 		
 //		System.exit(0);
 		
+		
+		
 	}
+	
+	WindowListener exitListener = new WindowAdapter() {
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            int confirm = JOptionPane.showOptionDialog(null, "Are You Sure to Close Application?", "Exit Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if (confirm == 0) {
+      
+            	System.exit(0);
+            }
+        }
+    };
 
 }
